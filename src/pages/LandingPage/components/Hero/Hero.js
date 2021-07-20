@@ -1,7 +1,7 @@
 import { Grid } from '@material-ui/core';
 import HeroLeft from './HeroLeft';
 import HeroRight from './HeroRight';
-import SectionContainer from '../../../../components/layout/SectionContainer/SectionContainer';
+import SectionContainer from 'core/layout/SectionContainer/SectionContainer';
 import useStyles from './styles';
 
 const Hero = () => {

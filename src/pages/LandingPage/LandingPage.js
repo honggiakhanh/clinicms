@@ -1,4 +1,4 @@
-import BaseContainer from '../../components/layout/BaseContainer/Container';
+import BaseContainer from 'core/layout/BaseContainer/Container';
 import Hero from './components/Hero/Hero';
 
 const LandingPage = () => {

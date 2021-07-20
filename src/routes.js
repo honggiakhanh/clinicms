@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Main from './components/layout/MainLayout/Main';
-import LandingPage from './pages/LandingPage/LandingPage';
+import Main from 'core/layout/MainLayout/Main';
+import LandingPage from 'pages/LandingPage/LandingPage';
 
 const AppRouter = () => {
   return (
