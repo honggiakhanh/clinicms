@@ -1,0 +1,8 @@
+.landingpage-image {
+  width: 50%;
+}
+
+.landingpage-image-image {
+  object-fit: contain;
+  width: 100%;
+}

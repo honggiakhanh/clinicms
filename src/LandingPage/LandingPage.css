@@ -1,0 +1,23 @@
+.landingpage {
+  background-color: #f9f6ff;
+  background-image: url("./Image/Group_3.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0 5em;
+  height: 100vh;
+  font-family: Montserrat;
+}
+
+.landingpage-nav {
+  padding: 1em;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.landingpage-about {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+
