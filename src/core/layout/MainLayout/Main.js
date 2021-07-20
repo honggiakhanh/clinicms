@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@material-ui/styles';
 import { CardMedia } from '@material-ui/core';
 import globalStyles from '../../../assets/styles/globalStyles';
-import NavBar from '../../NavigationBar/NavBar';
+import NavBar from '../../components/NavigationBar/NavBar';
 import Group_3 from './Group_3.png';
 
 import useStyles from './styles';

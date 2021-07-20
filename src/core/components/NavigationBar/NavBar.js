@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardMedia } from '@material-ui/core';
-import BaseContainer from '../layout/BaseContainer/Container';
-import NavBarLogo from '../../assets/img/NavbarLogo.png';
+import BaseContainer from 'core/layout/BaseContainer/Container';
+import NavBarLogo from 'assets/img/NavbarLogo.png';
 import useStyles from './styles';
 
 const NavBarItems = [
