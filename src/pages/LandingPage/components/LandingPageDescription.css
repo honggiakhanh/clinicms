@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   width: 50%;
-  font-family: Lato;
   padding: 3em;
 }
 
@@ -58,10 +57,10 @@
   position: relative;
 }
 
-.landingpage-button > button:hover .landingpage-button-logo{
+.landingpage-button > button:hover .landingpage-button-logo {
   width: 100%;
 }
-.landingpage-button > button:hover .landingpage-button-text{
+.landingpage-button > button:hover .landingpage-button-text {
   color: #995bff;
 }
 
@@ -91,4 +90,3 @@
   font-size: 1.25rem;
   letter-spacing: 3px;
 }
-
