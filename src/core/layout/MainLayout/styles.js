@@ -4,7 +4,6 @@ export default makeStyles(theme => ({
   main: {
     backgroundColor: '#f9f6ff',
     minHeight: '100vh',
-    fontFamily: 'Montserrat',
     position: 'relative',
     overflow: 'hidden',
     zIndex: 999,
