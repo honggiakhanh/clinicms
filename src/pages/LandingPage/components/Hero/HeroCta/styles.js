@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core';
-import { deepPurple } from '@material-ui/core/colors';
 
 export default makeStyles({
   button: {
@@ -10,12 +9,12 @@ export default makeStyles({
     border: 'none',
     outline: 'none',
     cursor: 'pointer',
-    background: deepPurple[400],
+    background: "#7D4AD9",
     '&:hover > div': {
       width: 214,
     },
     '&:hover > span': {
-      color: deepPurple[400],
+      color: "#7D4AD9",
     },
   },
   buttonIconOuter: {
@@ -46,6 +45,6 @@ export default makeStyles({
     top: '50%',
     transform: 'translateY(-50%)',
     left: '10px',
-    color: deepPurple[400],
+    color: "#7D4AD9",
   },
 });

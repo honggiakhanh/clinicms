@@ -7,9 +7,7 @@ const HeroDesc = () => {
   return (
     <Fragment>
       <p className={clsx(classes.heroDescBase, classes.heroDescContent)}>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse pariatur
-        quidem voluptatibus saepe? Nobis ex excepturi ipsum accusantium
-        perferendis numquam, quasi dolor atque laudantium magni.
+      Chuyên trị các bệnh về tâm lý, nội tiết tố, mập, các vấn đề về cân nặng, các vấn đề lag não hay quên
       </p>
       <p className={clsx(classes.heroDescBase, classes.heroDescPhone)}>
         123456789
