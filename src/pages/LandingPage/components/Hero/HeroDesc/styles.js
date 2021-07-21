@@ -2,10 +2,11 @@ import { makeStyles } from '@material-ui/core';
 
 export default makeStyles({
   heroDescBase: {
-    fontSize: 18,
+    fontSize: "1em",
     fontWeight: 500,
     color: '#828282',
     lineHeight: 1.6,
+    letterSpacing: "2px"
   },
   heroDescContent: {
     maxWidth: 500,

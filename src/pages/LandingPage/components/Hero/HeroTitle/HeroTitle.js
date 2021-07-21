@@ -4,7 +4,7 @@ const HeroTitle = () => {
   const classes = useStyles();
   return (
     <Typography variant='h1' className={classes.heroTitle}>
-      Phòng khám bác sĩ <span>Trung</span>
+      Phòng khám bác sĩ <span>TRUNG</span>
     </Typography>
   );
 };

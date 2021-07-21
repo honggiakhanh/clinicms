@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Main from 'core/layout/MainLayout/Main';
 import LandingPage from 'pages/LandingPage/LandingPage';
+import Medicine from 'pages/Medicine/Medicine'
 
 const AppRouter = () => {
   return (
@@ -8,7 +9,7 @@ const AppRouter = () => {
       <Main>
         <Switch>
           <Route path='/' exact component={LandingPage} />
-          {/* <Route path='/medicine' exact component={Medicine} /> */}
+          <Route path='/medicine' exact component={Medicine} />
         </Switch>
       </Main>
     </Router>

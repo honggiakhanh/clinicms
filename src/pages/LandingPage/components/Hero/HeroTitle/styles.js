@@ -3,9 +3,9 @@ import { deepPurple } from '@material-ui/core/colors';
 
 export default makeStyles({
   heroTitle: {
-    fontSize: 36,
-    fontWeight: 500,
-    letterSpacing: 2,
+    fontSize: "1.5em",
+    fontWeight: 600,
+    letterSpacing: 4,
     marginBottom: 20,
     '& > span': {
       color: deepPurple[400],
