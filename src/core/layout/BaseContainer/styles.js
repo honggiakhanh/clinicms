@@ -2,6 +2,6 @@ import { makeStyles } from '@material-ui/core';
 
 export default makeStyles({
   baseContainer: {
-    maxWidth: 1350,
+    maxWidth: 1600,
   },
 });

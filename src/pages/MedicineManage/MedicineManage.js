@@ -8,7 +8,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import useStyles from './components/Hero/styles'
+import useStyles from './styles'
 
 const columns = [
     { id: 'STT', label: 'STT', type: 'interger'},
