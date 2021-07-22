@@ -1,32 +1,32 @@
-import React from "react";
-import useStyles from "./styles";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import BaseContainer from "core/layout/BaseContainer/Container";
-import clsx from "clsx";
+import React from 'react';
+import useStyles from './styles';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import BaseContainer from 'core/layout/BaseContainer/Container';
+import clsx from 'clsx';
 
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import SaveIcon from "@material-ui/icons/Save";
-import DeleteIcon from "@material-ui/icons/Delete";
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import SaveIcon from '@material-ui/icons/Save';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const DropDownMenu = ({ type, setType }) => {
   const classes = useStyles();
 
-  const types = ["lọ", "vỉ", "viên"];
+  const types = ['lọ', 'vỉ', 'viên'];
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     setType(event.target.value);
   };
 
   return (
-    <FormControl variant="outlined" className={classes.dropdownmenu}>
+    <FormControl variant='outlined' className={classes.dropdownmenu}>
       <Select value={type} onChange={handleChange}>
-        <MenuItem value="">-</MenuItem>
+        <MenuItem value=''>-</MenuItem>
         <MenuItem value={types[0]}>{types[0]}</MenuItem>
         <MenuItem value={types[1]}>{types[1]}</MenuItem>
         <MenuItem value={types[2]}>{types[2]}</MenuItem>
@@ -38,7 +38,7 @@ const DropDownMenu = ({ type, setType }) => {
 const AddMedicineForm = () => {
   const classes = useStyles();
 
-  const [type, setType] = React.useState("");
+  const [type, setType] = React.useState('');
 
   return (
     <BaseContainer>
@@ -51,7 +51,12 @@ const AddMedicineForm = () => {
             <Typography className={classes.text}>TÊN THUỐC</Typography>
             <TextField
               className={classes.textfieldinput}
-              variant="outlined"
+              variant='outlined'
+              InputProps={{
+                classes: {
+                  notchedOutline: classes.notchedOutline,
+                },
+              }}
             ></TextField>
           </div>
           <div className={classes.span3}>
@@ -59,7 +64,7 @@ const AddMedicineForm = () => {
             <div className={classes.dFlex}>
               <TextField
                 className={classes.textfieldinput}
-                variant="outlined"
+                variant='outlined'
               ></TextField>
               <DropDownMenu type={type} setType={setType} />
             </div>
@@ -69,7 +74,7 @@ const AddMedicineForm = () => {
             <div className={classes.dFlex}>
               <TextField
                 className={classes.textfieldinput}
-                variant="outlined"
+                variant='outlined'
               ></TextField>
               <p className={classes.sidetype}>{type}</p>
             </div>
@@ -81,7 +86,7 @@ const AddMedicineForm = () => {
             <div className={classes.dFlex}>
               <TextField
                 className={classes.textfieldinput}
-                variant="outlined"
+                variant='outlined'
               ></TextField>
               <p className={classes.sidetype}>{type}</p>
             </div>
@@ -90,14 +95,14 @@ const AddMedicineForm = () => {
             <Typography className={classes.text}>GHI CHÚ</Typography>
             <TextField
               className={classes.textfieldinput}
-              variant="outlined"
+              variant='outlined'
             ></TextField>
           </div>
           <div className={classes.span4}>
             <Typography className={classes.text}>NGÀY MUA</Typography>
             <TextField
               className={classes.textfieldinput}
-              variant="outlined"
+              variant='outlined'
             ></TextField>
           </div>
           <div className={classes.span2}>
@@ -105,7 +110,7 @@ const AddMedicineForm = () => {
             <div className={classes.dFlex}>
               <TextField
                 className={classes.textfieldinput}
-                variant="outlined"
+                variant='outlined'
               ></TextField>
               <p className={classes.sidetype}>viên</p>
             </div>
@@ -115,7 +120,7 @@ const AddMedicineForm = () => {
             <div className={classes.dFlex}>
               <TextField
                 className={classes.textfieldinput}
-                variant="outlined"
+                variant='outlined'
               ></TextField>
               <p className={classes.sidetype}>viên</p>
             </div>
@@ -124,8 +129,8 @@ const AddMedicineForm = () => {
         <div className={classes.buttongroup}>
           <ButtonGroup className={classes.savebutton}>
             <Button
-              color="primary"
-              size="large"
+              color='primary'
+              size='large'
               className={classes.savebuttonicon}
               startIcon={<SaveIcon />}
             >
