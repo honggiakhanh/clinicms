@@ -1,23 +1,23 @@
-import React from "react";
-import useStyles from "./styles";
-import Typography from "@material-ui/core/Typography";
-import BaseContainer from "core/layout/BaseContainer/Container";
-import clsx from "clsx";
-import Input from "@material-ui/core/Input";
-
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-
-import Button from "@material-ui/core/Button";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import SaveIcon from "@material-ui/icons/Save";
+import { useState } from 'react';
+import clsx from 'clsx';
+import {
+  Typography,
+  Input,
+  MenuItem,
+  Select,
+  Button,
+  ButtonGroup,
+} from '@material-ui/core';
+import SaveIcon from '@material-ui/icons/Save';
+import BaseContainer from 'core/layout/BaseContainer/Container';
+import useStyles from './styles';
 
 const DropDownMenu = ({ type, setType }) => {
   const classes = useStyles();
 
-  const types = ["lọ", "vỉ", "viên"];
+  const types = ['lọ', 'vỉ', 'viên'];
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     setType(event.target.value);
   };
 
@@ -28,10 +28,10 @@ const DropDownMenu = ({ type, setType }) => {
       onChange={handleChange}
       className={classes.dropdownmenu}
     >
-      <MenuItem value="">-</MenuItem>
-      <MenuItem value={types[0]}>{types[0]}</MenuItem>
-      <MenuItem value={types[1]}>{types[1]}</MenuItem>
-      <MenuItem value={types[2]}>{types[2]}</MenuItem>
+      <MenuItem value=''>-</MenuItem>
+      {types.map(type => (
+        <MenuItem value={type}>{type}</MenuItem>
+      ))}
     </Select>
   );
 };
@@ -39,7 +39,7 @@ const DropDownMenu = ({ type, setType }) => {
 const AddMedicineForm = () => {
   const classes = useStyles();
 
-  const [type, setType] = React.useState("");
+  const [type, setType] = useState('');
 
   return (
     <BaseContainer>
@@ -52,7 +52,7 @@ const AddMedicineForm = () => {
             <Typography className={classes.text}>TÊN THUỐC</Typography>
             <Input
               className={classes.input}
-              variant="outlined"
+              variant='outlined'
               disableUnderline={true}
             />
           </div>
@@ -61,7 +61,7 @@ const AddMedicineForm = () => {
             <div className={classes.dFlex}>
               <Input
                 className={classes.input}
-                variant="outlined"
+                variant='outlined'
                 disableUnderline={true}
               />
               <DropDownMenu type={type} setType={setType} />
@@ -72,7 +72,7 @@ const AddMedicineForm = () => {
             <div className={classes.dFlex}>
               <Input
                 className={classes.input}
-                variant="outlined"
+                variant='outlined'
                 disableUnderline={true}
               />
               <p className={classes.sidetype}>{type}</p>
@@ -85,7 +85,7 @@ const AddMedicineForm = () => {
             <div className={classes.dFlex}>
               <Input
                 className={classes.input}
-                variant="outlined"
+                variant='outlined'
                 disableUnderline={true}
               />
               <p className={classes.sidetype}>{type}</p>
@@ -95,7 +95,7 @@ const AddMedicineForm = () => {
             <Typography className={classes.text}>GHI CHÚ</Typography>
             <Input
               className={clsx(classes.input, classes.inputghichu)}
-              variant="outlined"
+              variant='outlined'
               disableUnderline={true}
               multiline={true}
               rows={4}
@@ -105,7 +105,7 @@ const AddMedicineForm = () => {
             <Typography className={classes.text}>NGÀY MUA</Typography>
             <Input
               className={classes.input}
-              variant="outlined"
+              variant='outlined'
               disableUnderline={true}
             />
           </div>
@@ -114,7 +114,7 @@ const AddMedicineForm = () => {
             <div className={classes.dFlex}>
               <Input
                 className={classes.input}
-                variant="outlined"
+                variant='outlined'
                 disableUnderline={true}
               />
               <p className={classes.sidetype}>viên</p>
@@ -125,7 +125,7 @@ const AddMedicineForm = () => {
             <div className={classes.dFlex}>
               <Input
                 className={classes.input}
-                variant="outlined"
+                variant='outlined'
                 disableUnderline={true}
               />
               <p className={classes.sidetype}>viên</p>
@@ -135,7 +135,7 @@ const AddMedicineForm = () => {
         <div className={classes.buttongroup}>
           <ButtonGroup className={classes.savebutton}>
             <Button
-              size="large"
+              size='large'
               className={classes.savebuttonicon}
               startIcon={<SaveIcon />}
             >
