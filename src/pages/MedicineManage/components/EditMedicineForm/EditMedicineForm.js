@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import clsx from "clsx";
 import {
   Typography,
@@ -13,35 +15,12 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import BaseContainer from "core/layout/BaseContainer/Container";
 import useStyles from "./styles";
 
-const AddMedicineForm = (props) => {
+const EditMedicineForm = () => {
   const classes = useStyles();
   const types = ["-", "lọ", "vỉ", "viên"];
-  // const [newMedicineName, setNewMedicineName] = useState([]);
-  // const [newQuantityAcquired, setNewQuantityAcquired] = useState("");
-  // const [newUnit, setNewUnit] = useState("");
-  // const [newQuantityInStock, setNewQuantityInStock] = useState("");
-  // const [newQuantityPerUnit, setNewQuantityPerUnit] = useState("");
-  // const [newNote, setNewNote] = useState("");
-  // const [newAcquiredDate, setNewAcquiredDate] = useState("");
-  // const [newSellPricePerCount, setNewSellPricePerCount] = useState("");
+  const [loading, setLoading] = useState(true);
 
-  const initialForm = {
-    medicine_name: "",
-    quantity_acquired: 0,
-    unit: 0,
-    quantity_in_stock: 0,
-    quantity_per_unit: 0,
-    note: "",
-    acquired_date: "",
-    acquired_price_per_count: 0,
-    sell_price_per_count: 0,
-  };
-
-  const [form, setForm] = useState(initialForm);
-
-  useEffect(() => {
-    console.log(form);
-  }, [form]);
+  const [form, setForm] = useState();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -51,7 +30,27 @@ const AddMedicineForm = (props) => {
     });
   };
 
-  return (
+  const param = useParams();
+
+  const baseUrl = "https://boiling-mountain-00836.herokuapp.com/api";
+
+  useEffect(() => {
+    axios.get(`${baseUrl}/medicine/${param.id}`).then((response) => {
+      setForm(response.data.data);
+      setLoading(false);
+    });
+  }, [param.id]);
+
+  console.log(form);
+
+  const submitEdit = () => {
+    console.log("luu")
+    axios.put(`${baseUrl}/medicine`, form)
+  }
+
+  return loading ? (
+    <div>Loading</div>
+  ) : (
     <BaseContainer>
       <form className={classes.form}>
         <div className={classes.header}>
@@ -182,6 +181,7 @@ const AddMedicineForm = (props) => {
               size="large"
               className={classes.savebuttonicon}
               startIcon={<SaveIcon />}
+              onClick={submitEdit}
             >
               Lưu
             </Button>
@@ -201,4 +201,4 @@ const AddMedicineForm = (props) => {
   );
 };
 
-export default AddMedicineForm;
+export default EditMedicineForm;

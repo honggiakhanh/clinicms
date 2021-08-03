@@ -1,115 +1,94 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
-import useStyles from './styles'
+import React, { useState, useEffect } from "react";
+import BaseContainer from "core/layout/BaseContainer/Container";
+import "./styles.css";
+import axios from "axios";
+import AddBoxOutlinedIcon from "@material-ui/icons/AddBoxOutlined";
+import { Link } from "react-router-dom";
+import DeleteIcon from "@material-ui/icons/Delete";
+import BorderColorIcon from "@material-ui/icons/BorderColor";
 
-const columns = [
-    { id: 'STT', label: 'STT', type: 'interger'},
-    { id: 'date', label: 'Ngày mua', type: 'date' },
-    { id: 'name', label: 'Tên thuốc', type: 'string'  },
-    {
-        id: 'quantity',
-        label: 'SL tồn',
-        // minWidth: 170,
-        // align: 'right',
-        type: 'number',
-        format: (value) => value.toLocaleString('en-US'),
-    },
-    {
-        id: 'buy',
-        label: 'Giá mua',
-        // minWidth: 170,
-        // align: 'right',
-        type: 'currency',
-        format: (value) => value.toLocaleString('en-US'),
-    },
-    {
-        id: 'sell',
-        label: 'Giá bán',
-        // minWidth: 170,
-        // align: 'right',
-        type: 'currency',
-        format: (value) => value.toFixed(2),
-    },
-];
+const MedicineManage = () => {
+  const baseUrl = "https://boiling-mountain-00836.herokuapp.com/api";
 
-function createData(STT, date, name, quantity, buy, sell) {
-    const density = quantity / buy;
-    return { STT, date, name, quantity, buy, sell, density };
-}
+  const priceUnit = [undefined, "-", "lọ", "vỉ", "viên"];
 
-const rows = [
-    createData(1, '13/05/1999', 'Panadol', 25, 55),
-    createData(2, '22/06/1999', 'Ketamin', 40, 100),
-    createData(3, '17/10/1999', 'Weed', 69, 200),
-    createData(4, '22/09/1999', 'Drug', 35, 500),
-];
-export default function StickyHeadTable() {
-    const classes = useStyles();
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [allMeds, setAllMeds] = useState([]);
 
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
+  useEffect(() => {
+    axios.get(`${baseUrl}/list-medicine`).then((response) => {
+      setAllMeds(response.data.data);
+    });
+  }, []);
 
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(+event.target.value);
-        setPage(0);
-    };
+  const deleteItem = (id) => {
+    axios.delete(`${baseUrl}/medicine`, JSON.stringify({ medicine_id: id }));
+  };
 
-    return (
-        <Paper className={classes.root}>
-            <TableContainer className={classes.container}>
-                <Table stickyHeader aria-label="sticky table">
-                    <TableHead>
-                        <TableRow>
-                            {columns.map((column) => (
-                                <TableCell
-                                    key={column.id}
-                                    align={column.align}
-                                    style={{ minWidth: column.minWidth }}
-                                    className={classes.head}
-                                >
-                                    {column.label}
-                                </TableCell>
-                            ))}
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
-                            return (
-                                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
-                                    {columns.map((column) => {
-                                        const value = row[column.id];
-                                        return (
-                                            <TableCell key={column.id} align={column.align} className={classes.body}>
-                                                {column.format && typeof value === 'number' ? column.format(value) : value}
-                                            </TableCell>
-                                        );
-                                    })}
-                                </TableRow>
-                            );
-                        })}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-            <TablePagination
-                rowsPerPageOptions={[10, 25, 100]}
-                component="div"
-                count={rows.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-            />
-        </Paper>
-    );
-}
+  return (
+    <BaseContainer>
+      <div>
+        <div className="topbar">
+          <input className="topbar-input" type="text" />
+          <Link to="medicine/add" style={{ textDecoration: "none" }}>
+            <button className="topbar-button" type="submit">
+              <AddBoxOutlinedIcon fontSize="medium" /> Thêm thuốc
+            </button>
+          </Link>
+        </div>
+        <table className="table">
+          <thead>
+            <tr className="table-titles">
+              <th className="first">STT</th>
+              <th>Ngày mua</th>
+              <th>Tên thuốc</th>
+              <th>SL Tồn</th>
+              <th>Giá mua</th>
+              <th>Giá bán</th>
+              <th className="table-icons"></th>
+              <th className="table-icons"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {allMeds.length > 0
+              ? allMeds.map((med, index) => {
+                  return (
+                    <tr key={index}>
+                      <td className="first">{index + 1}</td>
+                      <td>{med.acquired_date}</td>
+                      <td>{med.medicine_name}</td>
+                      <td>{med.quantity_in_stock}</td>
+                      <td>
+                        {med.acquired_price_per_count}/
+                        <span className="price-unit">
+                          {priceUnit[Number(med.unit)]}
+                        </span>
+                      </td>
+                      <td>
+                        {med.sell_price_per_count}/
+                        <span className="price-unit">
+                          {priceUnit[Number(med.unit)]}
+                        </span>
+                      </td>
+                      <td className="table-icons">
+                        <DeleteIcon
+                          onClick={() => deleteItem(med.medicine_id)}
+                        />
+                      </td>
+                      <td className="table-icons">
+                        <Link to={`/medicine/edit/${med.medicine_id}`}>
+                          <BorderColorIcon fontSize="small" />
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })
+              : null}
+          </tbody>
+        </table>
+      </div>
+    </BaseContainer>
+  );
+};
+
+export default MedicineManage;

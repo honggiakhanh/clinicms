@@ -1,0 +1,79 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  font-family: Montserrat;
+}
+
+.topbar-input {
+  font-size: 1.25rem;
+  border-radius: 3px;
+  width: 432px;
+  height: 46px;
+  padding-left: 0.75em;
+  border: 1px solid #bdbdbd;
+  background: transparent;
+}
+.topbar-input:hover {
+  border: 2px solid #7d4ad9;
+}
+.topbar-input:focus {
+  outline: none !important;
+  border: 2px solid #7d4ad9;
+}
+
+.topbar-button {
+  width: 224px;
+  height: 46px;
+  padding: 1rem;
+  border-radius: 999px;
+  background-color: #7d4ad9;
+  outline: none;
+  border: none;
+  color: white;
+  font-size: 1.4375rem;
+  font-weight: 400;
+  letter-spacing: 0.065rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+}
+
+.table {
+  width: 100%;
+  text-align: left;
+}
+
+.table-titles {
+  width: 100%;
+  background-color: #35dab2;
+  color: white;
+  border: none;
+}
+.table tr th {
+  font-size: 20px;
+  font-weight: 500;
+  height: 80px;
+  padding-left: 2rem;
+}
+
+.table tr td {
+  font-size: 20px;
+  font-weight: 500;
+  height: 80px;
+  padding-left: 2rem;
+}
+
+.first {
+  padding-left: 0 !important;
+  text-align: center;
+}
+
+.table-icons {
+  padding: 0 !important;
+}
+
+td, th {
+  border: none !important;
+}

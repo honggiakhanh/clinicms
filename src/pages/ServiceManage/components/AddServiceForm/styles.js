@@ -89,26 +89,7 @@ export default makeStyles({
       justifyContent: "space-between",
       paddingRight: "2em",
       "&:hover": {
-        color: "white",
-        backgroundColor: "#35DAB2",
-      },
-    },
-  },
-  delbutton: {
-    margin: "1rem",
-    "&>button": {
-      border: "2px solid #EB5757",
-      color: "#EB5757",
-      width: "215px",
-      height: "61px",
-      fontSize: "24px",
-      letterSpacing: "0.22em",
-      display: "flex",
-      justifyContent: "space-between",
-      paddingRight: "2em",
-      "&:hover": {
-        color: "white",
-        backgroundColor: "#EB5757",
+        borderColor: "black",
       },
     },
   },
